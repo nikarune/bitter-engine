@@ -1,0 +1,14 @@
+if (global.record_ref.xprevious != global.record_ref.x or global.record_ref.yprevious != global.record_ref.y) {
+	var _rec = 0;
+	
+	// Update pos.
+	for (var i = party_size * party_record_dist - 1; i > 0; i--) {
+		pos[i] = pos[i - 1];
+	}
+	
+	// Set the party leader's pos to the new one.
+	pos[0] = {
+		x : global.record_ref.x,
+		y : global.record_ref.y,
+	}
+}

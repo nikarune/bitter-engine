@@ -35,7 +35,13 @@
   },
   "name":"rpgamemaker",
   "resources":[
+    {"id":{"name":"obj_actor","path":"objects/obj_actor/obj_actor.yy",},},
+    {"id":{"name":"obj_party_manager","path":"objects/obj_party_manager/obj_party_manager.yy",},},
+    {"id":{"name":"obj_test","path":"objects/obj_test/obj_test.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
+    {"id":{"name":"scr_actors","path":"scripts/scr_actors/scr_actors.yy",},},
+    {"id":{"name":"spr_player_marker","path":"sprites/spr_player_marker/spr_player_marker.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
