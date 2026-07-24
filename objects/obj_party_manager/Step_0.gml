@@ -10,5 +10,9 @@ if (global.record_ref.xprevious != global.record_ref.x or global.record_ref.ypre
 	pos[0] = {
 		x : global.record_ref.x,
 		y : global.record_ref.y,
+		direction : global.record_ref.direction,
 	}
 }
+
+x = global.record_ref.x;
+y = global.record_ref.y;

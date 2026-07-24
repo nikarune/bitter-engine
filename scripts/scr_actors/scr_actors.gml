@@ -1,11 +1,10 @@
 global.party = {};
 global.party_names = [];
+global.party_state = PARTYSTATES.ROAM;
 
 function Party_Member() constructor {
 	name = "???";
 	description = "Party member.";
-	
-	object = obj_actor;
 	
 	#region Stats
 	
@@ -17,14 +16,56 @@ function Party_Member() constructor {
 	
 	#endregion
 
-	#region Sprites
+	#region Actions
 	
-	s_idle = noone;
-	s_walk = noone;
+	actions = [];
 	
 	#endregion
 	
+	#region Sprites
+	
+	s_idle = spr_actor_kris_idle;
+	s_walk = spr_actor_kris_walk;
+	
+	s_battle_idle = spr_kris_battle;
+	s_battle_nametag = spr_battle_nametag_kris;
+	s_battle_area_enter = spr_kris_battle_enter;
+	s_battle_area_landing = spr_kris_battle_land;
+	
+	#endregion
+	
+	#region System
+	
+	object = obj_actor;
+	instance = noone;
+	
+	#endregion
 }
+
+function PM_Susie() : Party_Member() constructor {
+	s_idle = spr_susie_idle;
+	s_walk = spr_susie_walk;
+	
+	s_battle_idle = spr_susie_battle;
+	s_battle_nametag = spr_battle_nametag_susie;
+	s_battle_area_enter = spr_susie_battle_enter;
+	s_battle_area_landing = spr_susie_battle_land;
+}
+	
+function Action() constructor {
+	name = "Action";
+	description = "An action.";
+	
+	object = obj_battle_action;
+}
+
+function ACT_Starstrike() constructor {
+	name = "Starstrike";
+	description = "Strike, full of stars.";
+	
+	object = obj_battle_action_starstrike;
+}
+	
 
 function Encounter() constructor {
 	#region Stats
@@ -43,7 +84,14 @@ function Encounter() constructor {
 	
 	
 	#endregion
+	
+	actions = [
+		new ACT_Starstrike(),
+		new Action(),
+	];
 }
+
+#region Functions
 
 function party_add(_name, _struct) {
 	array_push(global.party_names, _name);
@@ -76,3 +124,37 @@ function partym_get_status(_member) {
 	return (_status);
 	
 }
+
+function partym_get_sprite(_member, _sprite) {
+	return (struct_get(partym_get_struct(_member), "s_" + _sprite));
+}
+
+function partym_get_object(_member) {
+	return (struct_get(partym_get_struct(_member), "object"));
+}
+
+function partym_get_instance(_member) {
+	return (struct_get(partym_get_struct(_member), "instance"));
+}
+
+function party_create_instances(_sep) {
+	for (var i = 0; i < array_length(global.party_names); i++) {
+		
+		var _partym_name = global.party_names[i];
+		var _partym_object = partym_get_object(_partym_name);
+		var _partym_inst = instance_create_layer(obj_party_manager.x, obj_party_manager.y, "Instances", _partym_object);
+		
+		with (_partym_inst) {
+			
+			name = _partym_name;
+			record = i * _sep;
+			
+		}
+		
+		struct_set(partym_get_struct(_partym_name), "instance", _partym_inst);
+		
+	}
+	
+}
+	
+#endregion
