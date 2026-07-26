@@ -13,13 +13,16 @@ function playerstate_battle_select() {
 	y = obj_battle.carousel_points[carousel_spot].y;
 	
 	sprite_index = partym_get_sprite(name, "battle_idle");
+	direction = point_direction(x, y, obj_battle_enemy.x, obj_battle_enemy.y);
+	depth = -bbox_bottom;
+	image_blend = make_colour_hsv(0, 0, y);
 	
 	cardinal_animate_battle();
-	direction = point_direction(x, y, obj_battle_enemy.x, obj_battle_enemy.y);
 	
 	if (KEY_ACCEPT) {
 		state = playerstate_go_to_battle_area;
 	}
+	
 	
 }
 

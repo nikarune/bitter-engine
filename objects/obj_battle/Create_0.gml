@@ -1,10 +1,6 @@
 instance_deactivate_all(true);
 
-partypos = [
-	{x : BATTLE_PARTYLEADER_X, y : BATTLE_PARTYLEADER_Y},
-	{x : BATTLE_PARTYMEMBER_XOFFSET, y : BATTLE_PARTYMEMBER_YOFFSET},
-	{x : RES.WIDTH - BATTLE_PARTYMEMBER_XOFFSET, y : BATTLE_PARTYMEMBER_YOFFSET}
-];
+partypos = [150, 30];
 
 buttons = [
 	spr_battle_button_fight,
@@ -19,15 +15,14 @@ for (var i = 0; i < array_length(global.party_names); i++) {
 	
 	var _partym_name = global.party_names[i];
 	var _partym_instance = partym_get_instance(_partym_name);
-	var _unitx = partypos[i].x;
-	var _unity = partypos[i].y;
-	carousel_points[i] = {x : _unitx, y : _unity};
+	
+	carousel_points[i] = {x : 0, y : 0};
 	
 	if (i == 0) {
 		
 		party_units[i] = instance_create_depth(
-			_unitx,
-			_unity,
+			0,
+			0,
 			-999,
 			obj_battle_party_leader,
 			{carousel_spot : i}
@@ -35,11 +30,21 @@ for (var i = 0; i < array_length(global.party_names); i++) {
 		
 	}
 	
+	else if (i >= 2) {
+		party_units[i] = instance_create_depth(
+			0,
+			0,
+			-999,
+			obj_battle_party_units,
+			{name : _partym_name, carousel_spot : i + 1}
+		);
+	}
+	
 	else {
 		
 		party_units[i] = instance_create_depth(
-			_unitx,
-			_unity,
+			0,
+			0,
 			-999,
 			obj_battle_party_units,
 			{name : _partym_name, carousel_spot : i}
@@ -54,16 +59,17 @@ var _enemyx = BATTLE_ENEMY_X;
 var _enemyy = BATTLE_ENEMY_Y;
 
 enemy = instance_create_depth(
-	_enemyx,
-	_enemyy,
+	0,
+	0,
 	-999,
 	obj_battle_enemy,
-	{carousel_spot : array_length(carousel_points)}
+	{carousel_spot : 2}
 );
 
-array_push(carousel_points, {x : _enemyx, y : _enemyy});
+array_push(carousel_points, {x : 0, y : 0});
 
 #endregion
+
 
 // Misc
 menu_spr = spr_battle_menu;
@@ -73,6 +79,8 @@ encounter_type = new Encounter();
 menu_height = sprite_get_height(menu_spr);
 menu_width = sprite_get_width(menu_spr);
 
-theta = pi/2;
-lerp_val = 0;
+theta = 360 / (array_length(carousel_points));
+theta_offset = 180 / (array_length(carousel_points));
 lerp_val_max = 0;
+
+select = 0;

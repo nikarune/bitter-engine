@@ -61,6 +61,7 @@
     {"id":{"name":"spr_battle_nametag_kris","path":"sprites/spr_battle_nametag_kris/spr_battle_nametag_kris.yy",},},
     {"id":{"name":"spr_battle_nametag_susie","path":"sprites/spr_battle_nametag_susie/spr_battle_nametag_susie.yy",},},
     {"id":{"name":"spr_box","path":"sprites/spr_box/spr_box.yy",},},
+    {"id":{"name":"spr_knight_battle","path":"sprites/spr_knight_battle/spr_knight_battle.yy",},},
     {"id":{"name":"spr_knight_beckon","path":"sprites/spr_knight_beckon/spr_knight_beckon.yy",},},
     {"id":{"name":"spr_kris_battle_enter","path":"sprites/spr_kris_battle_enter/spr_kris_battle_enter.yy",},},
     {"id":{"name":"spr_kris_battle_land","path":"sprites/spr_kris_battle_land/spr_kris_battle_land.yy",},},

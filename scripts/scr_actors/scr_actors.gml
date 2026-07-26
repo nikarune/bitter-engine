@@ -24,6 +24,7 @@ function Party_Member() constructor {
 	
 	#region Sprites
 	
+	s_icon = spr_kris_battle_enter;
 	s_idle = spr_actor_kris_idle;
 	s_walk = spr_actor_kris_walk;
 	
@@ -43,6 +44,7 @@ function Party_Member() constructor {
 }
 
 function PM_Susie() : Party_Member() constructor {
+	s_icon = spr_susie_battle_enter;
 	s_idle = spr_susie_idle;
 	s_walk = spr_susie_walk;
 	
