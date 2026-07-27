@@ -16,3 +16,8 @@ if (global.record_ref.xprevious != global.record_ref.x or global.record_ref.ypre
 
 x = global.record_ref.x;
 y = global.record_ref.y;
+
+if (!party_created) {
+	party_create_instances(party_record_dist);
+	party_created = true;
+}

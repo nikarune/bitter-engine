@@ -15,7 +15,14 @@ function playerstate_battle_select() {
 	sprite_index = partym_get_sprite(name, "battle_idle");
 	direction = point_direction(x, y, obj_battle_enemy.x, obj_battle_enemy.y);
 	depth = -bbox_bottom;
-	image_blend = make_colour_hsv(0, 0, y);
+	
+	if (array_length(global.party_names) != 1) {
+		image_blend = make_colour_hsv(0, 0, y);
+	}
+	
+	else {
+		image_blend = make_colour_hsv(0, 0, BATTLE_PARTYLEADER_Y);
+	}
 	
 	cardinal_animate_battle();
 	

@@ -19,7 +19,6 @@ for (var i = 0; i < array_length(global.party_names); i++) {
 	carousel_points[i] = {x : 0, y : 0};
 	
 	if (i == 0) {
-		
 		party_units[i] = instance_create_depth(
 			0,
 			0,
@@ -27,7 +26,6 @@ for (var i = 0; i < array_length(global.party_names); i++) {
 			obj_battle_party_leader,
 			{carousel_spot : i}
 		);
-		
 	}
 	
 	else if (i >= 2) {
@@ -41,30 +39,39 @@ for (var i = 0; i < array_length(global.party_names); i++) {
 	}
 	
 	else {
-		
 		party_units[i] = instance_create_depth(
 			0,
 			0,
 			-999,
 			obj_battle_party_units,
 			{name : _partym_name, carousel_spot : i}
-		);
-		
+		);	
 	}
 	
 }
 
 // Create enemy
-var _enemyx = BATTLE_ENEMY_X;
-var _enemyy = BATTLE_ENEMY_Y;
+enemy = noone;
 
-enemy = instance_create_depth(
-	0,
-	0,
-	-999,
-	obj_battle_enemy,
-	{carousel_spot : 2}
-);
+if (array_length(global.party_names) == 1) {
+	enemy = instance_create_depth(
+		0,
+		0,
+		-999,
+		obj_battle_enemy,
+		{carousel_spot : 1}
+	);
+}
+
+else {
+	enemy = instance_create_depth(
+		0,
+		0,
+		-999,
+		obj_battle_enemy,
+		{carousel_spot : 2}
+	);
+}
 
 array_push(carousel_points, {x : 0, y : 0});
 
@@ -74,7 +81,6 @@ array_push(carousel_points, {x : 0, y : 0});
 // Misc
 menu_spr = spr_battle_menu;
 menu_image_index = 0;
-menu_layer = 0;
 encounter_type = new Encounter(); 
 menu_height = sprite_get_height(menu_spr);
 menu_width = sprite_get_width(menu_spr);
@@ -83,4 +89,29 @@ theta = 360 / (array_length(carousel_points));
 theta_offset = 180 / (array_length(carousel_points));
 lerp_val_max = 0;
 
-select = 0;
+party_select = 0;
+menu_select = 0;
+current_menu = 0;
+
+menu = [1, 1, 1];
+
+
+// what the fuck
+for (var i = 0; i < array_length(party_units); i++) {
+	var _offset = (theta_offset * ((array_length(carousel_points) mod 2 != 0))) / 2;
+	var _unit = party_units[i];
+	
+	partypos[i] = (((theta * (_unit.carousel_spot + 1))) - (180 * _unit.carousel_spot));
+	
+	if (partypos[i] > 90) {
+		partypos[i] += _offset;	
+	}
+	
+	else if (partypos[i] < 90) {
+		partypos[i] -= _offset;	
+	}
+	
+	partypos[i] = abs(partypos[i]);
+}
+
+theta = partypos[0];
