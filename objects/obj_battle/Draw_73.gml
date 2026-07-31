@@ -108,3 +108,23 @@ else if (current_menu == 1) {
 
 // Battle nametag
 draw_sprite(partym_get_sprite(global.party_names[party_select], "battle_nametag"), 0, _menux, _menuy);
+
+for (var i = 0; i < array_length(global.party_names); i++) {
+	draw_set_font(fn_main_1);
+	
+	var _partym_name = global.party_names[i];
+	var _icon = partym_get_sprite(_partym_name, "icon");
+	
+	var _iconx = BATTLE_MENU_ICON_MARGIN;
+	var _icony = BATTLE_MENU_ICON_MARGIN + BATTLE_MENU_ICON_SEP * i;
+	
+	if (party_select == i) {
+		draw_text(_iconx, _icony, ">")	
+		
+		_iconx += 10;
+	}
+	
+	draw_sprite(_icon, 0, _iconx, _icony);
+	draw_text(_iconx + 20, _icony, _partym_name)
+	
+}

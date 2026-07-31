@@ -16,20 +16,9 @@ function playerstate_battle_select() {
 	direction = point_direction(x, y, obj_battle_enemy.x, obj_battle_enemy.y);
 	depth = -bbox_bottom;
 	
-	if (array_length(global.party_names) != 1) {
-		image_blend = make_colour_hsv(0, 0, y);
-	}
-	
-	else {
-		image_blend = make_colour_hsv(0, 0, BATTLE_PARTYLEADER_Y);
-	}
-	
+	image_blend = make_colour_hsv(0, 0, (y / BATTLE_PARTYLEADER_Y) * 255);
+	show_debug_message((y / BATTLE_PARTYLEADER_Y) * 100)
 	cardinal_animate_battle();
-	
-	if (KEY_ACCEPT) {
-		state = playerstate_go_to_battle_area;
-	}
-	
 	
 }
 

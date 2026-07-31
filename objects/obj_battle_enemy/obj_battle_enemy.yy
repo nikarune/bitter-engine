@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_knight_battle",
-    "path":"sprites/spr_knight_battle/spr_knight_battle.yy",
+    "name":"spr_knight_beckon",
+    "path":"sprites/spr_knight_beckon/spr_knight_beckon.yy",
   },
   "spriteMaskId":null,
   "visible":true,

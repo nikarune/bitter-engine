@@ -19,7 +19,7 @@ var _minor_axis = min(_semi_horizontal_radius, _semi_vertical_radius) * 2;
 for (var i = 0; i < array_length(carousel_points); i++) {
 	
 	var _offset = (theta_offset * (array_length(carousel_points) mod 2 != 0));
-	var _point = (360 / (array_length(carousel_points)) * i) + theta - _offset;
+	var _point = (360 / array_length(party_units)) * i + theta;
 	
 	carousel_points[i].x = _ellipse_center_x + (_semi_horizontal_radius * dcos(_point));
 	carousel_points[i].y = _ellipse_center_y + (_semi_vertical_radius * dsin(_point));
@@ -32,11 +32,12 @@ theta = lerp(theta, lerp_val_max, 0.1);
 
 lerp_val_max = partypos[party_select];
 
-party_select += (keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left));
+party_select += (keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up));
 party_select = clamp(party_select, 0, array_length(global.party_names) - 1);
 
 menu_select += (keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left));
-show_debug_message(menu_select)
+
+global.partym_selected = global.party_names[party_select];
 
 if (KEY_ACCEPT) {
 	current_menu = menu[menu_select];
@@ -45,3 +46,4 @@ if (KEY_ACCEPT) {
 if (KEY_CANCEL) {
 	current_menu = 0;	
 }
+
