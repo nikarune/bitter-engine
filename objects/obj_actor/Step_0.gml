@@ -25,7 +25,7 @@ if (status == PARTY.LEADER) {
 
 // Record the position of the other party members.
 else if (recording) {
-	
+
 	// Set the party member's position and direction.
 	x = obj_party_manager.pos[record].x;
 	y = obj_party_manager.pos[record].y;
@@ -53,4 +53,4 @@ else if (recording) {
 
 	cardinal_animate();
 
-	#endregion
+#endregion
