@@ -2,8 +2,6 @@ party_size = 3;
 party_record_dist = 20;
 party_created = false
 
-global.record_ref = obj_party_manager;
-
 pos = [];
 
 for (var i = 0; i < party_size * party_record_dist; i++) {

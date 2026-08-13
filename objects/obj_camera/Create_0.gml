@@ -4,3 +4,5 @@ x_to = x;
 y_to = y;
 
 camera_easein_time = 1;
+
+perfect_center = true;

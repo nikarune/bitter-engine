@@ -2,6 +2,19 @@
 
 #macro FPS 60
 
+enum RES {
+	WIDTH = 320,
+	HEIGHT = 240,
+}
+
+#endregion
+
+#region Camera
+
+#macro CAM_ACTIVE camera_get_active()
+#macro CAM_X camera_get_view_x(CAM_ACTIVE)
+#macro CAM_Y camera_get_view_y(CAM_ACTIVE)
+
 #endregion
 
 #region Input
@@ -15,11 +28,12 @@
 
 #endregion
 
-#region Cardinal Dir
+#region Phys
 
 #macro DIRECTION_COUNT 4 // The amount of directions an actor can walk in.
-#macro CARDINAL_DIR direction div (360 / DIRECTION_COUNT)
+#macro CARDINAL_DIR round(direction / (360 / DIRECTION_COUNT))
 #macro BATTLE_CARDINAL_DIR round(direction / (360 / 8))
+#macro COLLISION_OBJECTS obj_col
 
 #endregion
 
@@ -28,11 +42,6 @@
 enum PARTY {
 	LEADER,
 	FOLLOWER,
-}
-
-enum RES {
-	WIDTH = 320,
-	HEIGHT = 240,
 }
 
 enum PARTYSTATES {
@@ -66,5 +75,22 @@ enum PARTYSTATES {
 #macro BATTLE_MENU_TEXT_CHUNK_SEP 4
 #macro BATTLE_MENU_ICON_MARGIN 3
 #macro BATTLE_MENU_ICON_SEP 10
+
+#endregion
+
+#region Textbox Presets
+
+#macro TEXTBOX_BOTTOM_X 20
+#macro TEXTBOX_BOTTOM_Y 170
+#macro TEXTBOX_TOP_X 20
+#macro TEXTBOX_TOP_Y 10
+#macro TEXTBOX_WIDTH 280
+#macro TEXTBOX_HEIGHT 60
+
+#macro TEXTBOX_TEXT_TOP_MARGIN 6
+#macro TEXTBOX_TEXT_SIDE_MARGIN 8
+
+#macro TEXTBOX_TEXT_LINE_SEP 15
+
 
 #endregion

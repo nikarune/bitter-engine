@@ -1,7 +1,25 @@
 // Update the target positions
 if (follow != noone) {
-	x_to = follow.x;
-	y_to = follow.y;
+	
+	if (perfect_center) {
+		
+		var _sprite_topleft_x = follow.x - follow.sprite_xoffset;
+		var _sprite_topleft_y = follow.y - follow.sprite_yoffset;
+		
+		var _x = _sprite_topleft_x + (follow.sprite_width div 2);
+		var _y = _sprite_topleft_y + (follow.sprite_height div 2);
+		
+		x_to = _x;
+		y_to = _y;
+		
+	}
+	
+	else {
+		
+		x_to = follow.x;
+		y_to = follow.y;
+		
+	}
 	
 }
 

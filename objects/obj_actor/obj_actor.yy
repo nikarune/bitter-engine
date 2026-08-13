@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_player_marker",
-    "path":"sprites/spr_player_marker/spr_player_marker.yy",
+    "name":"spr_dev_player_marker",
+    "path":"sprites/spr_dev_player_marker/spr_dev_player_marker.yy",
   },
   "spriteMaskId":null,
   "visible":true,
