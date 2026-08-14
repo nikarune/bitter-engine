@@ -5,9 +5,13 @@ scene_info = [];
 timer = 0;
 
 scene_info = [
-	[scene_prep_dialogue, ["Hello i am{c,c_blue} SANS FROM UDNERTALE{c,c_white}.", "Ohh boy"]],
-	[scene_dialogue],
-	[scene_wait, 60],
-	[scene_prep_dialogue, ["This cutscene is now{c,c_red} over."]],
-	[scene_dialogue],
+	[scene_prep_dialogue, 
+		[
+			"test 123", 
+			"{c,c_red}red {c,c_green}green {c,c_blue}blue",
+			"{c,c_test}this color doesnt exist.",
+			"{f,fn_papyrus}papyrus font",
+			"{f,fn_test}this font doesnt exist"
+		]
+	]
 ];

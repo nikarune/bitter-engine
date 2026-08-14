@@ -18,8 +18,16 @@ function run_dialogue_command(_cmd) {
 		// Color switching
 		case "c":
 			
+			
 			var _color_index = _cmd_params[0];
 			var _color = global.color_library[$ _color_index];
+			
+			if (!struct_exists(global.color_library, _color_index)) {
+				
+				console_write($"Color \"{_color_index}\" not found. Setting to default.", CONSOLE_COLOR_ERROR);	
+				_color = c_white;
+				
+			}
 			
 			draw_set_color(_color);
 			
@@ -32,8 +40,8 @@ function run_dialogue_command(_cmd) {
 			
 			if (_font == -1) {
 				
-				show_error("No such font found.", false);
-				draw_set_font(fn_main);
+				console_write("No font found. Setting to default.", CONSOLE_FONT_ERROR);
+				draw_set_font(fn_main)
 				
 			}
 			

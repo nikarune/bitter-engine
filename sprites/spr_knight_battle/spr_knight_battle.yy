@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"ARCHIVED",
-    "path":"folders/Sprites/ARCHIVED.yy",
+    "name":"Sprites",
+    "path":"folders/ARCHIVE/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

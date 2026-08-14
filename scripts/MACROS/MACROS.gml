@@ -94,3 +94,10 @@ enum PARTYSTATES {
 
 
 #endregion
+
+#region Console
+
+#macro CONSOLE_COLOR_ERROR 0
+#macro CONSOLE_FONT_ERROR 1
+
+#endregion

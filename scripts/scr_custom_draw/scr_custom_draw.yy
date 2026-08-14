@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_custom_draw",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_custom_draw",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/ARCHIVE/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
